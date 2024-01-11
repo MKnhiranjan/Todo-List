@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Welcome to Todo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+            @media screen and (min-width:900px) {
+                
+            
+            body{
+                margin:0;
+                padding:0;
+                /* background-image:url(../static/bg.jpg); */
+                background-repeat: no-repeat;
+                background-position-y: top;
+                background-size: cover;
+            }
+            .wrapper{
+                position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            }
+            .container{
+                border: 4px solid yellow;
+                background-color: blanchedalmond;
+                min-width: 400px;
+                border-radius: 5px;
+                padding-bottom: 24px;
+                margin-left: 67px;
+                                /* margin-top: 220px; */
+            }
+            .wrapper1 input[type="submit"]{
+                background-color: black;
+                color: white;
+            }
+            textarea{
+                width: 300px;
+                height: 70px;
+            }
+            
+            h3{
+                color: navy;
+                font-size: 20px;
+                    
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                text-align: center;
+            }
+            p{
+                color: black;
+                font-size: 15px;
+                padding-bottom: 15px;
+                margin-left: 20px;
+
+            }
+            a{
+                text-decoration: none;
+                color: white;
+                padding: 10px;
+                background-color:rgb(238, 30, 30);
+                border-radius: 10px;
+            }
+            .wrapper1{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                margin-left: 52px;
+                height: 95vh;
+                /* margin-top: 340px; */
+                /* margin-top: 220px; */
+
+            }
+            .main{
+                position: relative;
+                width: 97vw;
+                height: 97vh;
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                align-items: baseline;
+                padding: 15px;
+                background-color: bisque;
+                border-radius: 15px;
+                border:2px solid black;                
+            }
+            label{
+                color: rgb(223, 99, 11);
+                font-size: 18px;
+                font-family: 'Times New Roman', Times, serif;
+                padding: 5px;
+            }
+            input,textarea{
+                color: rgb(87, 86, 88);
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-weight: bolder;
+                padding: 10px;
+                font-size: 18px;
+                background-color: rgb(230, 240, 97);
+
+            }
+            a{
+                
+                margin-left: 70px;
+            }
+
+        }
+        .add{
+            
+                margin-bottom: 80px !important;
+        }
+        </style>
+    </head>
+    <body>
+
+        <h3>Todo List</h3>
+        {% block content %}
+        <div class="main">
+            
+        
+        <div class="wrapper">
+            <div class='container'>
+            {% if item %}
+            {% for i in item %}
+            <div>
+                
+            
+            <h3>{{i.topic}}</h3>
+            <p>{{i.description}}</p>
+        </div>
+        <div>
+            
+        
+            <a href="{% url 'edit' i.topic%}">edit</a>
+            <a href="{% url 'delete' i.id %}">delete</a>            {% endfor %}
+        
+            {%endif%}
+       
+            <a class="add" href={% url 'form' %}>create a task </a>
+                        {% endblock %}
+                    </div>     
+        </div>
+        </div>
+    </body>
+</html>

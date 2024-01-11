@@ -1,0 +1,9 @@
+<head>
+    <title>working</title>
+</head>
+<form action="" method="POST">
+{% csrf_token %} 
+<p>Do you want to delete an item </p>
+{{item}}
+<input type ='submit' value="yes">
+<a href='{% url "todo" %}'>no</a>
